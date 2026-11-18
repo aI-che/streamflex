@@ -1,98 +1,37 @@
 # StreamFlex
 
-**StreamFlex** is a Java-based command-line simulation of a modern streaming platform. The project focuses on object-oriented design, subscription management, dynamic pricing, payment processing, and state-based content access control.
+A **Java** command-line simulation of a streaming platform, built to practice **object-oriented design and design patterns**.
 
 ## Features
 
-* User and account management
-* Subscription plan customization
-* Dynamic premium add-ons
-* Dynamic subscription pricing
-* Content browsing and search
-* Content playback authorization
-* Multiple payment methods
-* Account state management
+- Accounts, subscriptions and dynamic pricing
+- Premium add-ons: 4K, ad-free, offline downloads
+- Content search and playback with age and plan checks
+- Credit card and crypto payments
 
-Users can customize their subscription with features such as **4K Resolution, Ad-Free Viewing, and Offline Downloads**. Playback access is controlled according to account state, age restrictions, and subscription privileges.
+## Design patterns
 
-## Design Patterns
+| Pattern | Used for |
+| --- | --- |
+| **State** | Account status: Active, Suspended, Pending Payment, Cancelled |
+| **Decorator** | Stacking premium add-ons on a base plan |
+| **Strategy** | Swappable payment methods |
 
-### State Pattern
+Three-layer architecture: **CLI → Domain → Data** (in-memory).
 
-Manages the different states of a user account, such as:
+## Run
 
-* Active
-* Suspended
-* Pending Payment
-* Cancelled
-
-The account state determines how operations such as playback and subscription actions are handled.
-
-### Decorator Pattern
-
-Allows premium subscription features to be added dynamically without modifying the base subscription plan.
-
-Examples:
-
-* 4K Resolution
-* Ad-Free Viewing
-* Offline Downloads
-
-### Strategy Pattern
-
-Provides interchangeable payment algorithms such as:
-
-* Credit Card
-* Cryptocurrency
-
-This allows new payment methods to be added without changing the existing business logic.
-
-## Architecture
-
-The system follows a three-layer architecture:
-
-```text
-Presentation / CLI
-        ↓
-Domain / Business Logic
-        ↓
-Data Access
+```bash
+javac -d out $(find src -name "*.java")
+java -cp out com.streamflex.App
 ```
 
-The presentation layer handles user interaction, the domain layer contains the core business logic and design patterns, and the data access layer manages the in-memory content inventory.
+Requires Java 11+. No external dependencies.
 
-## Technologies
+## About
 
-* Java 11+
-* Object-Oriented Programming
-* Design Patterns
-* Java Collections
-* Command-Line Interface
-
-The application uses standard Java libraries and does not require an external database or heavy framework.
-
-## Project Structure
-
-```text
-src/
-└── com/
-    └── streamflex/
-        ├── data/
-        ├── domain/
-        │   ├── decorator/
-        │   ├── model/
-        │   ├── state/
-        │   └── strategy/
-        ├── exception/
-        ├── presentation/
-        └── App.java
-```
-
-## Academic Project
-
-Developed as part of the **Object-Oriented Analysis and Design (OOAD)** course at Dokuz Eylül University.
+Built for the Object-Oriented Analysis and Design (OOAD) course at Dokuz Eylül University.
 
 ## License
 
-MIT License
-
+MIT
